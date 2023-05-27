@@ -99,12 +99,9 @@ public class FBSignUpPageTests extends SharedDriver {
         Thread.sleep(2000);
     }
 
-
-
     @ParameterizedTest
     @ValueSource(strings = {"1905", "1950", "2023"})
     public void yearTestParameterized(String yearInput) throws InterruptedException {
-
 
         driver.findElement(By.xpath("//*[@title='Year']")).click();
         Thread.sleep(2000);
@@ -118,7 +115,8 @@ public class FBSignUpPageTests extends SharedDriver {
 
     @ParameterizedTest
     @ValueSource(strings = {"Sep", "Oct", "Nov"})
-    public void monthTestParameterized(String monthInput) throws InterruptedException {
+    public void monthTestParameterized(String monthInput){
+
         WebElement monthDropDownListElement4 = locators.monthDropDownList;
         wait.until(ExpectedConditions.elementToBeClickable(monthDropDownListElement4));
         monthDropDownListElement4.click();
@@ -134,7 +132,6 @@ public class FBSignUpPageTests extends SharedDriver {
 
     @Test
     public void setMonthExampleTest() throws InterruptedException {
-
 
         WebElement monthDropDownListElement = locators.monthDropDownList;
         wait.until(ExpectedConditions.elementToBeClickable(monthDropDownListElement));
@@ -208,7 +205,6 @@ public class FBSignUpPageTests extends SharedDriver {
     public void PrivacyPolicyLinkTest() throws InterruptedException {
         wait.until(ExpectedConditions.elementToBeClickable(locators.privacyPolicyLink));
 
-
         WebElement privacyPolicyLinkElement = locators.privacyPolicyLink;
         wait.until(ExpectedConditions.elementToBeClickable(locators.privacyPolicyLink));
         privacyPolicyLinkElement.click();
@@ -223,5 +219,4 @@ public class FBSignUpPageTests extends SharedDriver {
 
         driver.switchTo().window(driver.getWindowHandles().iterator().next());
     }
-
 }

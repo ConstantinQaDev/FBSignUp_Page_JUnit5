@@ -17,9 +17,7 @@ public class PageWait {
         this.wait = new WebDriverWait(driver, Duration.ofSeconds(5));
         PageFactory.initElements(driver, this);
     }
-    protected WebElement waitForElementVisibility(By locator){
-        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
-    }
-
-
+//    protected WebElement waitForElementVisibility(By locator){
+//        return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
+//    }
 }
