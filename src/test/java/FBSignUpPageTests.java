@@ -1,5 +1,5 @@
-import org.FaceBookPage.Locators;
-import org.FaceBookPage.SharedDriver;
+import org.FaceBookPage.SignUpPage;
+import org.FaceBookPage.TestBase;
 import static org.FaceBookPage.Constants.FACEBOOK_HOME_PAGE_URL;
 
 import org.junit.jupiter.api.*;
@@ -15,10 +15,10 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-public class FBSignUpPageTests extends SharedDriver {
+public class FBSignUpPageTests extends TestBase {
 
     private static WebDriver driver;
-    private static Locators locators;
+    private static SignUpPage locators;
     static WebDriverWait wait;
 
     @BeforeAll
@@ -26,7 +26,7 @@ public class FBSignUpPageTests extends SharedDriver {
         driver = getWebDriver();
         driver.get(FACEBOOK_HOME_PAGE_URL);
 
-        locators = new Locators(driver);
+        locators = new SignUpPage(driver);
 
         WebElement createNewAccountElement = locators.createNewAccountField;
         assertNotNull(createNewAccountElement);
@@ -38,7 +38,7 @@ public class FBSignUpPageTests extends SharedDriver {
 
     @AfterAll
     public static void classTearDown(){
-        SharedDriver.closeBrowser();
+        TestBase.closeBrowser();
     }
 
     @Test
@@ -166,31 +166,28 @@ public class FBSignUpPageTests extends SharedDriver {
     }
 
     @Test
-    public void radioButtonsTest() throws InterruptedException {
+    public void radioButtonsTest()  {
         wait.until(ExpectedConditions.elementToBeClickable(locators.genderFemaleRadioButton));
 
         WebElement genderFemaleRadioButtonElement = locators.genderFemaleRadioButton;
         wait.until(ExpectedConditions.elementToBeClickable(locators.genderFemaleRadioButton));
         genderFemaleRadioButtonElement.click();
         assertNotNull(genderFemaleRadioButtonElement);
-        Thread.sleep(2000);
 
         WebElement genderMaleRadioButtonElement = locators.genderMaleRadioButton;
         wait.until(ExpectedConditions.elementToBeClickable(locators.genderMaleRadioButton));
         genderMaleRadioButtonElement.click();
         assertNotNull(genderMaleRadioButtonElement);
-        Thread.sleep(2000);
     }
 
     @Test
-    public void termsLinkTest() throws InterruptedException {
+    public void termsLinkTest() {
         wait.until(ExpectedConditions.elementToBeClickable(locators.termsLink));
 
         WebElement termsLinkElement = locators.termsLink;
         wait.until(ExpectedConditions.elementToBeClickable(locators.termsLink));
         termsLinkElement.click();
         assertNotNull(termsLinkElement);
-        Thread.sleep(2000);
 
         for (String windowHandle1 : driver.getWindowHandles()) {
             driver.switchTo().window(windowHandle1);
@@ -202,14 +199,13 @@ public class FBSignUpPageTests extends SharedDriver {
     }
 
     @Test
-    public void PrivacyPolicyLinkTest() throws InterruptedException {
+    public void PrivacyPolicyLinkTest()  {
         wait.until(ExpectedConditions.elementToBeClickable(locators.privacyPolicyLink));
 
         WebElement privacyPolicyLinkElement = locators.privacyPolicyLink;
         wait.until(ExpectedConditions.elementToBeClickable(locators.privacyPolicyLink));
         privacyPolicyLinkElement.click();
         assertNotNull(privacyPolicyLinkElement);
-        Thread.sleep(2000);
 
         for(String windowHandle2 : driver.getWindowHandles()){
             driver.switchTo().window(windowHandle2);

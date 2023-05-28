@@ -5,8 +5,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 
-public class Locators extends PageWait{
-    public Locators(WebDriver driver){
+
+public class SignUpPage extends PageBase{
+    public SignUpPage(WebDriver driver){
         super(driver);
     }
     @FindBy(how = How.XPATH, using = "//*[text()='Create new account']")
